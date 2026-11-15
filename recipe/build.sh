@@ -10,7 +10,12 @@ meson_config_args=(
     -Dpdfium=disabled
     -Dquantizr=disabled
     -Dintrospection=disabled
+    --force-fallback-for=imagequant
+    -Dimagequant:default_library=static
 )
+
+# Add Meson wrap and packagefiles for BSD 2-Clause licensed libimagequant
+cp -R ${RECIPE_DIR}/subprojects .
 
 meson setup build \
     ${MESON_ARGS} \

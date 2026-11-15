@@ -1,0 +1,9 @@
+[wrap-git]
+directory = libimagequant
+url = https://github.com/lovell/libimagequant.git
+revision = v2.4.1
+depth = 1
+diff_files = 0001-meson-dependency.patch
+
+[provide]
+dependency_names = imagequant

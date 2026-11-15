@@ -1,0 +1,23 @@
+diff --git a/meson.build b/meson.build
+index 1111111..2222222 100644
+--- a/meson.build
++++ b/meson.build
+@@ -52,10 +52,17 @@ lib = library(
+   ],
+ )
+ 
++imagequant_dep = declare_dependency(
++  link_with : lib,
++  include_directories : include_directories('.'),
++)
++
++meson.override_dependency('imagequant', imagequant_dep)
++
+ test_imagequant = executable(
+   'test_imagequant',
+   'test/test.c',
+-  link_with : lib
++  dependencies : imagequant_dep,
+ )
+ test('imagequant', test_imagequant)
+ 

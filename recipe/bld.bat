@@ -9,7 +9,13 @@ set meson_config_args=^
     -Dopenexr=disabled ^
     -Dpdfium=disabled ^
     -Dquantizr=disabled ^
-    -Dintrospection=disabled
+    -Dintrospection=disabled ^
+    --force-fallback-for=imagequant ^
+    -Dimagequant:default_library=static
+
+@REM Add Meson wrap and packagefiles for BSD 2-Clause licensed libimagequant
+xcopy "%RECIPE_DIR%\subprojects" subprojects /E /I /Y
+if %ERRORLEVEL% neq 0 exit /b 1
 
 @REM MSVC does not support `__attribute__((weak))`
 @REM Remove when libvips 8.19 is released (it builds with -Dfuzz=false by default)
